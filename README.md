@@ -5,9 +5,9 @@ Projeto angular para a disciplina Frameworks, especializacao Programacao Java, U
 https://www.figma.com/file/ZBU41BHwIliKchEpE0nCLc/Untitled?type=design&node-id=0%3A1&t=4OjOurvOrWK2OJRv-1
 
 # Checklist
-[ ] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
-Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
-Apresentar as telas com layout responsivo usando ou não algum framework CSS.
+- [ ] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
+- [ ] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
+- [ ] Apresentar as telas com layout responsivo usando ou não algum framework CSS.
 Construir páginas web com o conceito de componentes.
 Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
 Usar pelo menos dois tipos de data-binding (Interpolation, Property Binding, Event Binding e Two Way Data Binding).
