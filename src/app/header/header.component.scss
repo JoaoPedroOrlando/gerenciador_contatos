@@ -1,5 +1,7 @@
 .navbar {
   margin-bottom: 20px; /* Add some spacing at the bottom */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .navbar-brand {
@@ -17,4 +19,3 @@
 .sidebar-menu.open {
   display: block; /* Show the sidebar menu when open class is added */
 }
-
