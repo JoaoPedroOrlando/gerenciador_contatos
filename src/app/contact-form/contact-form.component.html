@@ -1,22 +1,37 @@
 <div class="container">
-    <h2 class="title">CONTATO</h2>
-    <div>
-      <label for="phone">Telefone:</label>
-      <input type="text" id="phone" >
-    </div>
-    <div class="row">
-        <div class="row-input">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" >
-        </div>
-        <div class="row-input">
-          <label for="lastName">Sobrenome:</label>
-          <input type="text" id="lastName" >
-        </div>
-    </div>
-    <div>
-      <label for="profession">Profissão:</label>
-      <input type="text" id="profession" >
-    </div>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="row-title">
+        <h2 class="title">CONTATO</h2>
+        <button class="btn btn-primary btn-save" type="submit">Salvar</button>
+      </div>
+      <div>
+        <label for="phone">Telefone:</label>
+        <input type="text" id="phone" formControlName="phone" mask="(000) 00 0000-00000">
+        <span class="warning-txt" *ngIf="contactForm.controls['phone'].status == 'INVALID' && contactForm.get('phone')?.touched">
+          Formato de telefone está incorreto
+        </span>
+      </div>
+      <div class="row">
+          <div class="row-input">
+              <label for="name">Nome:</label>
+              <input type="text" id="name" formControlName="name" >
+          </div>
+          <div class="row-input">
+            <label for="lastName">Sobrenome:</label>
+            <input type="text" id="lastName" formControlName="lastName" >
+          </div>
+      </div>
+      <div>
+        <label for="profession">Profissão:</label>
+        <input type="text" id="profession" formControlName="profession" >
+      </div>
+      <div>
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" formControlName="email" >
+        <span class="warning-txt" *ngIf="contactForm.controls['email'].status == 'INVALID' && contactForm.get('email')?.touched">
+          Formato de e-mail está incorreto
+        </span>
+      </div>
+    </form>
   </div>
   

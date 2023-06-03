@@ -7,7 +7,6 @@
   }
   
   label {
-
     margin-bottom: 10px;
     color: #959595;
   }
@@ -20,6 +19,7 @@
 
 .title{
   color: #4e4e4e;
+  width: auto;
 }
 
 .row{
@@ -28,4 +28,20 @@
 }
 .row-input{
   width: 50%;
+}
+
+.row-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-save{
+  background-color: #9747FF;
+  border-color: #9747FF;
+}
+
+.warning-txt{
+  font-size: small;
+  color: #e7838d;
 }
