@@ -17,7 +17,7 @@ export class ContactFormComponent {
     lastName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
     phone: ['', Validators.required],
     profession:['',Validators.maxLength(30)],
-    email:['', [Validators.required, Validators.email]]
+    email:['', [Validators.email]]
   });
 
   constructor(

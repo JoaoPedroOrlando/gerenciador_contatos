@@ -9,12 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactListElementComponent } from './contact-list-element/contact-list-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    ContactListComponent,
+    ContactListElementComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -22,9 +27,11 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     AppRoutingModule,
     CommonModule,
     RouterModule.forRoot([    
-      { path: '', component: ContactFormComponent },  
+      { path: '', component: ContactFormComponent },
+      { path: 'contactlist', component: ContactListComponent  }
     ]),
     NgxMaskModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

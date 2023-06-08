@@ -1,0 +1,17 @@
+.row{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.btn-div{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.btn{
+    text-decoration: none;
+    margin: 0 5px 0 5px;
+}

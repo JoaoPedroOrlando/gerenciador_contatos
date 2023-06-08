@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let contact of contactsList | async">
+        <app-contact-list-element [name]="contact.name" [lastName]=" contact.lastName" 
+        [id]="contact.id" (deleteEvent)="deleteItemFromList($event)">
+        </app-contact-list-element>
+    </div>
+</div>
