@@ -28,7 +28,8 @@ import { ContactListElementComponent } from './contact-list-element/contact-list
     CommonModule,
     RouterModule.forRoot([    
       { path: '', component: ContactFormComponent },
-      { path: 'contactlist', component: ContactListComponent  }
+      { path: 'contactlist', component: ContactListComponent  },
+      {path: 'details/:id', component: ContactFormComponent}
     ]),
     NgxMaskModule.forRoot(),
     HttpClientModule,
