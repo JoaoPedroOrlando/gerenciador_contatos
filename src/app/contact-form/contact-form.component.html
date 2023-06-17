@@ -2,7 +2,7 @@
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="row-title">
         <h2 class="title">CONTATO</h2>
-        <button class="btn btn-primary btn-save" type="submit">Salvar</button>
+        <button class="btn btn-primary btn-save" type="submit" [disabled]="!contactForm.valid">Salvar</button>
       </div>
       <div>
         <label for="phone">Telefone:</label>
@@ -13,12 +13,28 @@
       </div>
       <div class="row">
           <div class="row-input">
-              <label for="name">Nome:</label>
-              <input type="text" id="name" formControlName="name" >
+            <label for="name">Nome:</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name" 
+              pattern="^([A-Za-zÀ-Úà-ú\s'-]*\b)+$"
+            >
+            <span class="warning-txt" [hidden]=" contactForm.get('name')?.valid  || contactForm.get('name')?.untouched">
+              Informe um nome válido
+            </span>
           </div>
           <div class="row-input">
             <label for="lastName">Sobrenome:</label>
-            <input type="text" id="lastName" formControlName="lastName" >
+            <input 
+              type="text" 
+              id="lastName" 
+              formControlName="lastName" 
+              pattern="^([A-Za-zÀ-Úà-ú\s'-]*\b)+$"
+            >
+            <span class="warning-txt" [hidden]=" contactForm.get('lastName')?.valid  || contactForm.get('lastName')?.untouched">
+              Informe um sobrenome válido
+            </span>
           </div>
       </div>
       <div>

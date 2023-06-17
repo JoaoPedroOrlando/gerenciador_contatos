@@ -1,0 +1,26 @@
+.spacer{
+    margin-right: 15px;
+}
+
+.add-btn{
+    background-color: #9747FF;
+    border-color: #9747FF;
+    border-radius: 0.375rem;
+}
+
+.media-icon {
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(47, 45, 45); 
+    transition: color 0.3s; 
+}
+.media-icon:hover{
+    color: #9747FF; 
+}
+
+.ul-dropdown{
+    min-width: auto;
+}
+
+  

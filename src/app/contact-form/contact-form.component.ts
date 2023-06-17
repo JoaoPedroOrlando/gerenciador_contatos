@@ -21,7 +21,8 @@ export class ContactFormComponent implements OnInit{
     lastName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
     phone: ['', Validators.required],
     profession:['',Validators.maxLength(30)],
-    email:['', [Validators.email]]
+    email:['', [Validators.email]],
+    medias:['']
   });
 
   constructor(
@@ -53,12 +54,23 @@ export class ContactFormComponent implements OnInit{
 
   onSubmit(): void{
     if (this.contactForm.valid) {
+      try{
+        const newContact:IContact ={
+          id:"",
+          name: this.contactForm.get('name')?.value,
+          lastName: this.contactForm.get('lastName')?.value,
+          phone: this.contactForm.get('lastName')?.value,
+          profession: this.contactForm.get('lastName')?.value,
+          email: this.contactForm.get('lastName')?.value,
+        }
+        const response = this.contactService.save(newContact);
+        console.log("response from save: ",response);
+      }catch(error){
+        console.log('error: ',error);
+      }
       console.log("Submit feito", this.contactForm.value);
       this.contactForm.reset();
-    } else {
-      console.log(this.contactForm.controls['email'].status);
-    }
-    
+    } 
   }
 
 }

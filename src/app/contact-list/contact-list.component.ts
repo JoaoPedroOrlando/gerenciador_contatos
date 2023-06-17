@@ -12,7 +12,7 @@ import {contacts} from '../../assets/contacts'
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit{
-  contactsList: IContact[] = [...contacts];
+  contactsList: IContact[] = [];
   //contactsList!: Observable<IContact[]>;
 
   constructor(
@@ -21,10 +21,13 @@ export class ContactListComponent implements OnInit{
     //this.contactsList = contactService.getContactList();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.contactsList = this.contactService.getContactList();
+  }
 
   deleteItemFromList(event:string){
-    this.contactsList = this.contactsList.filter(el => el.id != event)
+    const operation:boolean = this.contactService.delete(event);
+    operation ? this.contactsList = this.contactsList.filter(el => el.id != event) : null;
     console.log(event);
   }
   

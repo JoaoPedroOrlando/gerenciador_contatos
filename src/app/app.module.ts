@@ -12,6 +12,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactListElementComponent } from './contact-list-element/contact-list-element.component';
+import { MediaInputComponent } from './media-input/media-input.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ContactListElementComponent } from './contact-list-element/contact-list
     ContactFormComponent,
     ContactListComponent,
     ContactListElementComponent,
+    MediaInputComponent,
+    AboutComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -29,7 +33,8 @@ import { ContactListElementComponent } from './contact-list-element/contact-list
     RouterModule.forRoot([    
       { path: '', component: ContactFormComponent },
       { path: 'contactlist', component: ContactListComponent  },
-      {path: 'details/:id', component: ContactFormComponent}
+      {path: 'details/:id', component: ContactFormComponent},
+      {path: 'about',component:AboutComponent}
     ]),
     NgxMaskModule.forRoot(),
     HttpClientModule,
