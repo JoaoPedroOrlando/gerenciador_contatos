@@ -7,13 +7,14 @@ import { NgxMaskModule } from 'ngx-mask'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { ContactFormComponent } from './layout/contact-form/contact-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { ContactListElementComponent } from './contact-list-element/contact-list-element.component';
-import { MediaInputComponent } from './media-input/media-input.component';
-import { AboutComponent } from './about/about.component';
+import { ContactListComponent } from './layout/contact-list/contact-list.component';
+import { ContactListElementComponent } from './layout/contact-list-element/contact-list-element.component';
+import { MediaInputComponent } from './layout/media-input/media-input.component';
+import { AboutComponent } from './layout/about/about.component';
+import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AboutComponent } from './about/about.component';
     ContactListElementComponent,
     MediaInputComponent,
     AboutComponent,
+    ModalAlertComponent,
   ],
   imports: [
     ReactiveFormsModule,

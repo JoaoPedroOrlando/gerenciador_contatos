@@ -6,7 +6,7 @@
       </div>
       <div>
         <label for="phone">Telefone:</label>
-        <input type="text" id="phone" formControlName="phone" mask="(000) 00 0000-00000">
+        <input type="text" id="phone" formControlName="phone" mask="00 0000-00000">
         <span class="warning-txt" *ngIf="contactForm.controls['phone'].status == 'INVALID' && contactForm.get('phone')?.touched">
           Formato de telefone está incorreto
         </span>

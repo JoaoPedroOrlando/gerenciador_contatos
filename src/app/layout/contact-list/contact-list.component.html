@@ -1,0 +1,12 @@
+<div class="container">
+     <div *ngFor="let contact of contactsList | async">
+    <!-- <div *ngFor="let contact of contactsList"> -->
+        <div *ngIf="contact.name && contact.lastName && contact.id">
+            <app-contact-list-element [name]="contact.name" [lastName]=" contact.lastName" 
+                [id]="contact.id" 
+                (deleteEvent)="deleteItemFromList($event)"
+                (editEvent)="editItemFromList($event)">
+            </app-contact-list-element>
+        </div>
+    </div>
+</div>

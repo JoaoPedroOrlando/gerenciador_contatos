@@ -1,71 +1,47 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+import {IMedia, Contact} from '../models/contact';
+import { idGenerator } from '../utils/idGenerator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
 
+  private baseUrl:string = environment.baseUrl;
+
   constructor(private http:HttpClient){ }
 
-  // getContactList(): Observable<IContact[]>{
-  //   return this.http.get<IContact[]>('/assets/contacts.json')
-  // }
-
-  getContactList():IContact[]{
-    const contactsListStr: string | null = localStorage.getItem('contacts');
-    if(contactsListStr){
-      return <IContact[]> JSON.parse(contactsListStr);
-    }
-    return [];
+  getContactList(): Observable<Contact[]>{
+    return this.http.get<Contact[]>(`${this.baseUrl}/contacts`);
   }
 
-  findOne(id:string):IContact | null{
-    const contactsListStr: string | null = localStorage.getItem('contacts');
-    if(contactsListStr){
-      const list:IContact[] = <IContact[]> JSON.parse(contactsListStr);
-      const value:undefined |IContact =  list.find(el => el.id === id);
-      return value ? value : null;
-    }
-    return null;
-  }
-  
-  save(contact:IContact):IContact[]{
-    //cria o id para o registro
-    contact.id = Math.floor(Math.random() * 16777215).toString(16);
-    const contactsListStr: string | null = localStorage.getItem('contacts');
-    if(contactsListStr){
-      let arr:IContact[] = <IContact[]> JSON.parse(contactsListStr);
-      const arrLenght:number = arr.length;
-      const newLenght:number = arr.push(contact);
-      const strArr:string = JSON.stringify(arr);
-      localStorage.setItem('contacts',strArr);
-      if(arrLenght == newLenght ){
-        throw {error:"Error trying to save contact"}
-      }
-      const newContactsListStr: string | null = localStorage.getItem('contacts');
-      return newContactsListStr ? <IContact[]> JSON.parse(newContactsListStr) : [];
-    }else{
-      let newArr = [];
-      newArr.push(contact);
-      const strArr:string = JSON.stringify(newArr);
-      localStorage.setItem('contacts',strArr);
-      const newContactsListStr: string | null = localStorage.getItem('contacts');
-      return newContactsListStr ? <IContact[]> JSON.parse(newContactsListStr) : [];
-    }
+  findOne(id:string):Observable<Contact>{
+    return this.http.get<Contact>(`${this.baseUrl}/contacts/${id}`);
   }
 
-  delete(id:string):boolean{
-    const contactsListStr: string | null = localStorage.getItem('contacts');
-    if(contactsListStr){
-      let arr:IContact[] = <IContact[]> JSON.parse(contactsListStr);
-      localStorage.setItem('contacts',JSON.stringify(arr.filter(el => el.id != id)))
-      return true;
-    }
-    return false;
+  save(contact:Contact):Observable<Contact>{
+    contact.id = idGenerator();
+    const httpOptions = {
+			headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+		};
+    return this.http.post<Contact>(`${this.baseUrl}/contacts`,contact,httpOptions);
   }
 
+  update(contact:Contact):Observable<Contact>{
+    console.log(contact.id);
+    const httpOptions = {
+			headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+		};
+    return this.http.put<Contact>(`${this.baseUrl}/contacts/${contact.id}`,contact,httpOptions);
+  }
+
+  delete(id:string):Observable<any>{
+    return this.http.delete(`${this.baseUrl}/contacts/${id}`);
+  }
 }
 
 export interface IContact{
@@ -75,4 +51,5 @@ export interface IContact{
   phone:string;
   profession?:string;
   email?:string;
+  medias?:IMedia;
 }

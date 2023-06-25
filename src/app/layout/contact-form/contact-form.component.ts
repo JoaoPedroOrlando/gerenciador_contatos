@@ -2,9 +2,10 @@ import { Component ,OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ContactService } from '../services/contact.service';
+import { ContactService } from '../../services/contact.service';
 import { contacts } from 'src/assets/contacts';
-import { IContact } from '../services/contact.service';
+import { IContact } from '../../services/contact.service';
+import { Contact } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-contact-form',
@@ -38,16 +39,15 @@ export class ContactFormComponent implements OnInit{
       this.id = params['id'];
       if(this.id){
         console.log(this.id)
-        const result = this.contactsList.find(el => el.id == this.id);
-        if(result){
+        this.contactService.findOne(this.id).subscribe((el)=>{
           this.contactForm.patchValue({
-            name: result.name,
-            lastName: result.lastName,
-            phone: result.phone,
-            profession: result.profession,
-            email: result.email
+            name: el.name,
+            lastName: el.lastName,
+            phone: el.phone,
+            profession: el.profession,
+            email: el.email
           });
-        }
+        });
       }
     });
   }
@@ -55,20 +55,22 @@ export class ContactFormComponent implements OnInit{
   onSubmit(): void{
     if (this.contactForm.valid) {
       try{
-        const newContact:IContact ={
-          id:"",
-          name: this.contactForm.get('name')?.value,
-          lastName: this.contactForm.get('lastName')?.value,
-          phone: this.contactForm.get('lastName')?.value,
-          profession: this.contactForm.get('lastName')?.value,
-          email: this.contactForm.get('lastName')?.value,
+        const newContact = new Contact();
+          newContact.name = this.contactForm.get('name')?.value;
+          newContact.lastName = this.contactForm.get('lastName')?.value;
+          newContact.email = this.contactForm.get('email')?.value;
+          newContact.phone = this.contactForm.get('phone')?.value;
+          newContact.profession = this.contactForm.get('profession')?.value;
+          newContact.medias = [];
+        if(this.id){
+          newContact.id = this.id;
+          this.contactService.update(newContact).subscribe();
+        }else{
+          this.contactService.save(newContact).subscribe()
         }
-        const response = this.contactService.save(newContact);
-        console.log("response from save: ",response);
       }catch(error){
         console.log('error: ',error);
       }
-      console.log("Submit feito", this.contactForm.value);
       this.contactForm.reset();
     } 
   }
