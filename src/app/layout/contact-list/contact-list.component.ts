@@ -19,7 +19,7 @@ export class ContactListComponent implements OnInit{
   constructor(
     private contactService: ContactService,
     private router:Router){
-    //this.contactsList = contactService.getContactList();
+    this.contactsList = contactService.getContactList();
   }
 
   ngOnInit(): void {
@@ -27,6 +27,13 @@ export class ContactListComponent implements OnInit{
   }
 
   deleteItemFromList(event:string){
+    console.log("Deletou",event)
+    try{
+      const res = this.contactService.delete(event);
+      console.log(res)
+    }catch(err){
+      console.log('erro ao deletar contato');
+    }
     // const operation:boolean = this.contactService.delete(event);
     // operation ? this.contactsList = this.contactsList.filter(el => el.id != event) : null;
     // console.log(event);

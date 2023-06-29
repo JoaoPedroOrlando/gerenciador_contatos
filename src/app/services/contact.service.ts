@@ -32,7 +32,6 @@ export class ContactService {
   }
 
   update(contact:Contact):Observable<Contact>{
-    console.log(contact.id);
     const httpOptions = {
 			headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 		};
@@ -40,7 +39,10 @@ export class ContactService {
   }
 
   delete(id:string):Observable<any>{
-    return this.http.delete(`${this.baseUrl}/contacts/${id}`);
+    const httpOptions = {
+			headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+		};
+    return this.http.delete(`${this.baseUrl}/contacts/${id}`,httpOptions);
   }
 }
 

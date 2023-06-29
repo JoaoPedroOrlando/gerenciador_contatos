@@ -23,4 +23,7 @@
     min-width: auto;
 }
 
+.media-row{
+    display: flex;
+}
   

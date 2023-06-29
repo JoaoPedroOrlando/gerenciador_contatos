@@ -1,26 +1,41 @@
-<div >
+<div class="media-row">
+  <button class="btn btn-primary add-btn spacer" type="button">Adicionar</button>
+  <div class="dropdown spacer">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Media
+    </button>
+    <ul class="dropdown-menu ul-dropdown">
+      <li 
+        value="facebook" 
+        (click)="dropdownAction('facebook')"
+      >
+        <i class="bi bi-facebook media-icon"></i>
+      </li>
 
+      <li 
+        value="whatsapp"
+        (click)="dropdownAction('whatsapp')"
+      >
+        <i class="bi bi-whatsapp media-icon"></i>
+      </li>
 
-        <button class="btn btn-primary add-btn" type="button">Adicionar</button>
-        <div class="dropdown spacer">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Media
-          </button>
-          <ul class="dropdown-menu ul-dropdown">
-            <li value="facebook" >
-                <i class="bi bi-facebook media-icon"></i>
-            </li>
-            <li value="whatsapp">
-                <i class="bi bi-whatsapp media-icon"></i>
-            </li>
-            <li value="instagram">
-                <i class="bi bi-instagram media-icon"></i>
-            </li>
-            <li value="linkedin">
-                <i class="bi bi-linkedin media-icon"></i>
-            </li>
-          </ul>
-        </div>
-        <input type="text" placeholder="Enter text">
+      <li 
+        value="instagram"
+        (click)="dropdownAction('intagram')"
+      >
+        <i class="bi bi-instagram media-icon"></i>
+      </li>
 
-  </div>  
+      <li 
+        value="linkedin"
+        (click)="dropdownAction('linkedin')"
+      >
+        <i class="bi bi-linkedin media-icon"></i>
+      </li>
+    </ul>
+  </div>
+  <input name="mediaValue" type="text" placeholder="Media" [(ngModel)]="mediaValue">
+</div>  
+<div>
+  
+</div>
