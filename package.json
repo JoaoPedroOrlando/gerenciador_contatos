@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-db":"json-server --watch db.json",
-    "build": "ng build",
+    "start-db": "json-server --watch db.json",
+    "build": "ng build --configuration --base-href=/gerenciador_contatos/",
+    "ghpages":"angular-cli-ghpages --dir=dist",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy":"npm run build & npm run ghpages"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "angular-cli-ghpages": "^1.0.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
     "json-server": "^0.17.3",
