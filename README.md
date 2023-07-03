@@ -4,6 +4,9 @@ Projeto angular para a disciplina Frameworks, especializacao Programacao Java, U
 # Protótipo_de_tela
 https://www.figma.com/file/ZBU41BHwIliKchEpE0nCLc/Untitled?type=design&node-id=0%3A1&t=4OjOurvOrWK2OJRv-1
 
+# Hospedagem
+https://joaopedroorlando.github.io/gencontatos/
+
 # Checklist
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
 - [x] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
