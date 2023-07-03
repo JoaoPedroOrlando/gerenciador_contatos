@@ -48,6 +48,9 @@
           Formato de e-mail está incorreto
         </span>
       </div>
+      <app-media-input (myEvent)="handleEvent($event)"/>
     </form>
+    <div *ngFor="let media of medias">
+      <p>{{media.profile}}</p>
+    </div>
   </div>
-  

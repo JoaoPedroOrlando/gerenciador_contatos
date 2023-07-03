@@ -13,7 +13,6 @@ import { Contact } from '../../models/contact';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit{
-  //contactsList: Contact[] = [];
   contactsList!: Observable<Contact[]>;
 
   constructor(
@@ -27,16 +26,13 @@ export class ContactListComponent implements OnInit{
   }
 
   deleteItemFromList(event:string){
-    console.log("Deletou",event)
     try{
-      const res = this.contactService.delete(event);
-      console.log(res)
+      this.contactService.delete(event).subscribe(el=>{
+        this.contactsList = this.contactService.getContactList();
+      });
     }catch(err){
       console.log('erro ao deletar contato');
     }
-    // const operation:boolean = this.contactService.delete(event);
-    // operation ? this.contactsList = this.contactsList.filter(el => el.id != event) : null;
-    // console.log(event);
   }
   
   editItemFromList(event:string){

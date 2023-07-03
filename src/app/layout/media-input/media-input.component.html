@@ -1,5 +1,9 @@
 <div class="media-row">
-  <button class="btn btn-primary add-btn spacer" type="button">Adicionar</button>
+  <button 
+    class="btn btn-primary add-btn spacer" 
+    type="button"
+    (click)="emitEvent()"
+  >Adicionar</button>
   <div class="dropdown spacer">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Media
@@ -21,7 +25,7 @@
 
       <li 
         value="instagram"
-        (click)="dropdownAction('intagram')"
+        (click)="dropdownAction('instagram')"
       >
         <i class="bi bi-instagram media-icon"></i>
       </li>
@@ -34,8 +38,23 @@
       </li>
     </ul>
   </div>
+  <div [ngSwitch]="mediaIcon" style="margin-right: 5px;">
+    <div *ngSwitchCase="'facebook'">
+      <i class="bi bi-facebook media-icon"></i>
+    </div>
+    <div *ngSwitchCase="'whatsapp'">
+      <i class="bi bi-whatsapp media-icon"></i>
+    </div>
+    <div *ngSwitchCase="'instagram'">
+      <i class="bi bi-instagram media-icon"></i>
+    </div>
+    <div *ngSwitchCase="'linkedin'">
+      <i class="bi bi-linkedin media-icon"></i>
+    </div>
+    <div *ngSwitchDefault>
+      <i class="bi bi-facebook media-icon"></i>
+    </div>
+  </div>
+  
   <input name="mediaValue" type="text" placeholder="Media" [(ngModel)]="mediaValue">
 </div>  
-<div>
-  
-</div>

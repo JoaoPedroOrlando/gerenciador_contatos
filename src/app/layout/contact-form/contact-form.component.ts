@@ -5,7 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ContactService } from '../../services/contact.service';
 import { contacts } from 'src/assets/contacts';
 import { IContact } from '../../services/contact.service';
-import { Contact } from 'src/app/models/contact';
+import { Contact, IMedia } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-contact-form',
@@ -16,6 +16,7 @@ export class ContactFormComponent implements OnInit{
   id?:string = undefined;
   showEmailErr:boolean = false;
   contactsList = [...contacts];
+  medias: IMedia[] = []; 
 
   contactForm: FormGroup = this.formBuilder.group({
     name:['', [Validators.required, Validators.minLength(3),Validators.maxLength(30)]],
@@ -23,7 +24,7 @@ export class ContactFormComponent implements OnInit{
     phone: ['', Validators.required],
     profession:['',Validators.maxLength(30)],
     email:['', [Validators.email]],
-    medias:['']
+    medias:[[]]
   });
 
   constructor(
@@ -47,6 +48,9 @@ export class ContactFormComponent implements OnInit{
             profession: el.profession,
             email: el.email
           });
+          if(el.medias){
+            this.medias = el.medias;
+          }
         });
       }
     });
@@ -61,7 +65,7 @@ export class ContactFormComponent implements OnInit{
           newContact.email = this.contactForm.get('email')?.value;
           newContact.phone = this.contactForm.get('phone')?.value;
           newContact.profession = this.contactForm.get('profession')?.value;
-          newContact.medias = [];
+          newContact.medias = this.medias;
         if(this.id){
           newContact.id = this.id;
           this.contactService.update(newContact).subscribe();
@@ -75,4 +79,9 @@ export class ContactFormComponent implements OnInit{
     } 
   }
 
+  handleEvent(eventData: IMedia) {
+    if(eventData.profile){
+      this.medias.push(eventData);
+    }
+  }
 }

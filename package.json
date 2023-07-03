@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-db": "json-server --watch db.json",
-    "build": "ng build --configuration --base-href=/gerenciador_contatos/",
-    "ghpages":"angular-cli-ghpages --dir=dist",
+    "db": "json-server --watch db.json",
+    "build": "ng build --configuration production --base-href=https:JoaoPedroOrlando.github.io/gerenciador_contatos/",
+    "ghpages":"angular-cli-ghpages --dir=dist/projeto_frameworks",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy":"npm run build & npm run ghpages"

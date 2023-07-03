@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {IMedia, Contact} from '../models/contact';
 import { idGenerator } from '../utils/idGenerator';
+import { ControlConfig } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,7 @@ export class ContactService {
   }
 
   delete(id:string):Observable<any>{
+    console.log("chegou no service");
     const httpOptions = {
 			headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 		};
