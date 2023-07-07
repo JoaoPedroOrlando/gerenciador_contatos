@@ -45,3 +45,29 @@
   font-size: small;
   color: #e7838d;
 }
+
+.row-label{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  background-color: rgb(226, 226, 226);
+  border-width: 1px;
+  border-color: rgb(226, 226, 226);
+  border-radius: 5px;
+  align-items: center;
+}
+
+.x-icon{
+  cursor: pointer;
+}
+
+.icon-container{
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn{
+  text-decoration: none;
+  margin: 0 5px 0 5px;
+}

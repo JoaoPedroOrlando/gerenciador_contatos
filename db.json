@@ -25,6 +25,24 @@
       "phone": "82937490976",
       "profession": "Engenheiro Químico",
       "email": "marcos-drumond91@mushsanches.com"
+    },
+    {
+      "id": "40b266",
+      "name": "Joao Pedro",
+      "lastName": "Orlando",
+      "phone": "45999162319",
+      "email": "joao.pedro.b.orlando@gmail.com",
+      "profession": "Programador",
+      "medias": [
+        {
+          "mediatype": 3,
+          "profile": "https://www.facebook.com/joaopedro.brugneraorlando"
+        },
+        {
+          "mediatype": 0,
+          "profile": "https://www.linkedin.com/in/joao-pedro-orlando/"
+        }
+      ]
     }
   ]
 }

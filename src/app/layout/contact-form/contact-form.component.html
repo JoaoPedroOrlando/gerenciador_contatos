@@ -41,7 +41,7 @@
         <label for="profession">Profissão:</label>
         <input type="text" id="profession" formControlName="profession" >
       </div>
-      <div>
+      <div style="margin-bottom: 10px;">
         <label for="email">E-mail:</label>
         <input type="text" id="email" formControlName="email" >
         <span class="warning-txt" *ngIf="contactForm.controls['email'].status == 'INVALID' && contactForm.get('email')?.touched">
@@ -50,7 +50,34 @@
       </div>
       <app-media-input (myEvent)="handleEvent($event)"/>
     </form>
-    <div *ngFor="let media of medias">
-      <p>{{media.profile}}</p>
+
+    <div *ngFor="let media of medias" style="margin-top: 10px;">
+      <div class="row-label">
+        <div [ngSwitch]="media.mediatype" style="margin-right: 5px;">
+            <div *ngSwitchCase="3">
+              <i class="bi bi-facebook media-icon"></i>
+            </div>
+            <div *ngSwitchCase="1">
+              <i class="bi bi-whatsapp media-icon"></i>
+            </div>
+            <div *ngSwitchCase="0">
+              <i class="bi bi-instagram media-icon"></i>
+            </div>
+            <div *ngSwitchCase="2">
+              <i class="bi bi-linkedin media-icon"></i>
+            </div>
+            <div *ngSwitchDefault>
+              <i class="bi bi-facebook media-icon"></i>
+            </div>
+        </div>
+          
+        <span>{{media.profile}}</span>
+        <div class="icon-container">
+        <button type="button" class="btn" (click)="deleteItem(media.profile)">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+        </div>
     </div>
+    </div>
+    
   </div>

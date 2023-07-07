@@ -75,6 +75,7 @@ export class ContactFormComponent implements OnInit{
       }catch(error){
         console.log('error: ',error);
       }
+      this.medias.length = 0;
       this.contactForm.reset();
     } 
   }
@@ -84,4 +85,9 @@ export class ContactFormComponent implements OnInit{
       this.medias.push(eventData);
     }
   }
+
+  deleteItem(mediaProfile:string){
+   this.medias = this.medias.filter(el=> el.profile !== mediaProfile);
+  }
+
 }

@@ -11,7 +11,6 @@ export class MediaInputComponent {
   @Output() myEvent: EventEmitter<IMedia> = new EventEmitter<IMedia>();
 
   mediaValue:string = "";
-  mediaList:IMedia[] | undefined;
   mediaIcon:string = 'facebook';
   mediaTypeEnum: MediaEnum = MediaEnum.FACEBOOK;
 
@@ -42,9 +41,10 @@ export class MediaInputComponent {
   }
 
   emitEvent() {
-    const eventData: string = 'Hello from child component';
     this.myEvent.emit({ 
       mediatype: this.mediaTypeEnum,
-      profile:this.mediaValue} as IMedia);
+      profile:this.mediaValue} as IMedia
+    );
+    this.mediaValue = "";
   }
 }
